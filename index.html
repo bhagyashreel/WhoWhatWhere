@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html ng-app="m3wApp" lang="en" >
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>searchApp</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/lib/jquery.min.js"></script>
+    <script type="text/javascript" src="js/lib/bootstrap.min.js"></script>
+
+    <!-- Theme CSS -->
+    <link href="css/styles.css" rel="stylesheet">
+
+
+</head>
+
+<body ng-controller="w3MainCtrl">
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 header-con">
+            <h1 class="title">Who?What?Where?</h1>
+        </div>
+        <div class="col-md-6 header-con">
+            <form class="form-inline pull-right searchposition" role="search">
+            <div class="form-group">
+                <select class="form-control"  name="repeatSelect" id="repeatSelect" ng-model="data.model"
+                        ng-change="update()"><option ng-repeat="option in data.availableOptions"
+                         ng-selected="{{ $index == 0 }}" ngvalue="{{option.name}}">{{option.name}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="text" id="search" class="form-control" placeholder="Search">
+            </div>
+            <div class="form-group">
+                <button type="submit" ng-click="update()" class="btn btn-primary form-control"> Search</button>
+            </div>
+            </form>
+
+        </div>
+    </div>
+
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+
+            <div class="collapse navbar-collapse " data-toggle="collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav scroll">
+                    <li ng-repeat="menu in menuNames | filter:name" id="{{menu}}">
+                        <a href="#/{{menu.name}}">{{menu.images}}{{menu.name}}</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--<image ng-src="images/combine.png" class="img-responsive"></image>-->
+    <div>
+        <ng-view></ng-view>
+    </div>
+
+</div>
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBP4anovO0JEFOGE79d4nrTczfR4AevPIE&callback=initMap"
+                async defer></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.js"></script>
+        <script type="text/javascript" src="js/lib/angular.min.js"></script>
+        <script type="text/javascript" src="js/lib/angular-route.min.js"></script>
+        <script type="text/javascript" src="app.js"></script>
+
+        <script type="text/javascript" src="js/controllers/viewDataCtrl.js"></script>
+</body>
+</html>
