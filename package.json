@@ -17,9 +17,6 @@
   "license": "BSD",
   "dependencies": {
     "babel-cli": "^6.11.4",
-    "gulp": "^3.9.1",
-    "gulp-concat": "^2.6.0",
-    "gulp-uglify": "^2.0.0",
     "node-yelp": "0.0.3",
     "require": "^2.4.20",
     "body-parser": "^1.15.2",

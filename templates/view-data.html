@@ -1,9 +1,10 @@
 
 <div class="row" style="height: 800px; width:2000px;">
     <div class="col-md-6  right-div" style="height: 800px; width:500px;overflow-y: scroll;">
-        <div ng-click="gotoBusiness(item.url)"  class="grid" ng-repeat="item in fetchData" class="item-detail" id="{{ item.id }}">
-            <div class="item-rating pull-left">{{item.rating}}</div>   <div class="item-name item-styles">{{$index + 1}}.{{item.name}}</div>
-
+        <div ng-click="gotoBusiness(item.url)"  class="grid" ng-repeat="item in fetchData"
+             class="item-detail" id="{{ item.id }}">
+            <div class="item-rating pull-left">{{item.rating}}</div>
+            <div class="item-name item-styles">{{$index + 1}}.{{item.name}}</div>
             <div class="pull-right"><img class="item-image img-responsive" ng-src="{{item.photo}}"/></div>
             <div class="item-name item-phone"> &#9990; {{item.phone}}</div>
             <div class="item-name item-address">{{item.address}}

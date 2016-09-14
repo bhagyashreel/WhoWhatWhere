@@ -56,7 +56,7 @@ w3App.controller("viewDataCtrl", function ($scope, $http, $routeParams, $window)
             markers.push(marker);
             bounds.extend(marker.position);
 
-            google.maps.event.addListener(marker, 'click', (function (marker, i) {
+            google.maps.event.addListener(marker, 'mouseover', (function (marker, i) {
                 return function () {
                     infowindow.setContent('<div><strong>' + locations[i].name + '</strong>' +
                         '<br>' + locations[i].address + '<br>' + locations[i].phone + '<br></div>');

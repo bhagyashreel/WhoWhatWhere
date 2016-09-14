@@ -26,7 +26,6 @@
         <div id="search">
             <form class="form-inline searchposition" role="search">
                 {{location}}
-                <span class="glyphicon glyphicon-search" style="top: 30px;"></span>
                 <input type="text" id="location" value="Sydney" class="form-control" placeholder="Search">
                 <select class="form-control" name="repeatSelect" id="repeatSelect" ng-model="data.model"
                         ng-change="update()">
@@ -51,7 +50,6 @@
                 </button>
             </div>
 
-
             <div class="collapse navbar-collapse " data-toggle="collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav scroll">
                     <li ng-repeat="menu in menuNames | filter:name" id="{{menu}}">
@@ -69,11 +67,11 @@
 
 </div>
 
+</body>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBP4anovO0JEFOGE79d4nrTczfR4AevPIE"
         async defer></script>
 <script type="text/javascript" src="js/lib/angular.min.js"></script>
 <script type="text/javascript" src="js/lib/angular-route.min.js"></script>
 <script type="text/javascript" src="app.js"></script>
 <script type="text/javascript" src="js/controllers/viewDataCtrl.js"></script>
-</body>
 </html>
