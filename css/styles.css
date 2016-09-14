@@ -1,7 +1,3 @@
-body {
-    background-color: #EEE;
-}
-
 .form-control {
     width: 200px;
     margin-top: 40px;
@@ -27,6 +23,7 @@ body {
 }
 
 body {
+    background: url("../images/backGrondImage.jpg") no-repeat !important;
     background-color: #6c769a;
     font-size: 24px;
 }
@@ -40,9 +37,6 @@ header {
     border: none;
 }
 
-nav .navbar-nav ul {
-
-}
 
 .navbar-default .navbar-nav > ul {
     margin-left: 20px;

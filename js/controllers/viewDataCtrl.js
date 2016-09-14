@@ -5,11 +5,9 @@ w3App.controller("viewDataCtrl", function ($scope, $http, $routeParams, $window)
     $scope.fetchData = [];
     $http({
         method: 'GET',
-        url: '/search?location=california&term=' + itemName + ''
+        url: '/search?location=london&term=' + itemName + ''
     }).then(function successCallback(response) {
-
         var data = response.data;
-        console.log('search data', data);
         $scope.fetchData = data;
         loadGoogleMarkers();
     }, function errorCallback(response) {
@@ -60,12 +58,6 @@ w3App.controller("viewDataCtrl", function ($scope, $http, $routeParams, $window)
                     infowindow.setContent('<div><strong>' + locations[i].name + '</strong>' +
                         '<br>' + locations[i].address + '<br>' + locations[i].phone + '<br></div>');
                     infowindow.open(map, marker);
-                    $('.grid').css('background-color', '');
-                    $('#' + marker.id).css('background-color', "#ccc");
-
-                    $('.right-div').animate({
-                        scrollTop: $('#' + marker.id).offset().top - 150
-                    }, 2000);
                 }
             })(marker, i));
         }
