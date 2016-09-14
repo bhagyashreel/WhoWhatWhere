@@ -2,10 +2,15 @@ w3App.controller("viewDataCtrl", function ($scope, $http, $routeParams, $window)
     var markers = [];
     var itemName = $routeParams.menuName;
 
+    var location = angular.element('#location').val();
+    if (location.length < 1) {
+        location = '';
+    }
+
     $scope.fetchData = [];
     $http({
         method: 'GET',
-        url: '/search?location=london&term=' + itemName + ''
+        url: '/search?location=' + location + '&term=' + itemName + ''
     }).then(function successCallback(response) {
         var data = response.data;
         $scope.fetchData = data;
@@ -40,7 +45,6 @@ w3App.controller("viewDataCtrl", function ($scope, $http, $routeParams, $window)
         var bounds = new google.maps.LatLngBounds();
 
         var marker, i;
-
         for (i = 0; i < locations.length; i++) {
             var coords = locations[i].cords;
             marker = new google.maps.Marker({
@@ -50,7 +54,6 @@ w3App.controller("viewDataCtrl", function ($scope, $http, $routeParams, $window)
             });
 
             markers.push(marker);
-
             bounds.extend(marker.position);
 
             google.maps.event.addListener(marker, 'click', (function (marker, i) {
@@ -61,7 +64,6 @@ w3App.controller("viewDataCtrl", function ($scope, $http, $routeParams, $window)
                 }
             })(marker, i));
         }
-
         map.fitBounds(bounds);
     }
 });

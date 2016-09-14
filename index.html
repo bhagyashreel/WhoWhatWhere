@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html ng-app="m3wApp" lang="en" >
+<html ng-app="m3wApp" lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -15,8 +14,6 @@
 
     <!-- Theme CSS -->
     <link href="css/styles.css" rel="stylesheet">
-
-
 </head>
 
 <body ng-controller="w3MainCtrl">
@@ -26,14 +23,17 @@
         <div class="col-md-6 header-con">
             <h1 class="title">Who?What?Where?</h1>
         </div>
-        <div class="col-md-4 header-con">
-            <form class="form-inline pull-right searchposition" role="search">
-            <div class="form-group">
-                <select class="form-control"  name="repeatSelect" id="repeatSelect" ng-model="data.model"
-                        ng-change="update()"><option ng-repeat="option in data.availableOptions"
-                         ng-selected="{{ $index == 0 }}" ngvalue="{{option.name}}">{{option.name}}</option>
+        <div id="search">
+            <form class="form-inline searchposition" role="search">
+                {{location}}
+                <span class="glyphicon glyphicon-search" style="top: 30px;"></span>
+                <input type="text" id="location" value="Sydney" class="form-control" placeholder="Search">
+                <select class="form-control" name="repeatSelect" id="repeatSelect" ng-model="data.model"
+                        ng-change="update()">
+                    <option ng-repeat="option in data.availableOptions" ng-selected="{{ $index == 0 }}"
+                            ngvalue="{{option.name}}">{{option.name}}
+                    </option>
                 </select>
-            </div>
             </form>
         </div>
     </div>
@@ -69,11 +69,11 @@
 
 </div>
 
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBP4anovO0JEFOGE79d4nrTczfR4AevPIE"
-                async defer></script>
-        <script type="text/javascript" src="js/lib/angular.min.js"></script>
-        <script type="text/javascript" src="js/lib/angular-route.min.js"></script>
-        <script type="text/javascript" src="app.js"></script>
-        <script type="text/javascript" src="js/controllers/viewDataCtrl.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBP4anovO0JEFOGE79d4nrTczfR4AevPIE"
+        async defer></script>
+<script type="text/javascript" src="js/lib/angular.min.js"></script>
+<script type="text/javascript" src="js/lib/angular-route.min.js"></script>
+<script type="text/javascript" src="app.js"></script>
+<script type="text/javascript" src="js/controllers/viewDataCtrl.js"></script>
 </body>
 </html>
