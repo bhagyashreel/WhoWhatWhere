@@ -32,20 +32,20 @@ var fourSquare = new Dodge({
     clientSecret: 'CDMXZTPWMVUZHYYH4ORN2W5LULKRF5VQTHKOJXHSVTMXUKCC'
 });
 
-function getFourSquare(term, location,  callBack) {
-    fourSquare.venues.search({near: location , query:term}, function(err, venues){
+function getFourSquare(term, location, callBack) {
+    fourSquare.venues.search({near: location, query: term}, function (err, venues) {
         if (err) {
             return callBack(err);
         }
-        console.log( venues);
+        console.log(venues);
         return callBack(null, fourParse(venues));
     });
 }
 
-function getYelpData(term, location,  callBack) {
-    yelp.search({ term: term, location: location })
+function getYelpData(term, location, callBack) {
+    yelp.search({term: term, location: location})
         .then(function (data) {
-            console.log( data);
+            console.log(data);
             return callBack(null, yelpParse(data));
         }).catch(function (cause) {
         return callBack(cause);
@@ -53,8 +53,8 @@ function getYelpData(term, location,  callBack) {
 }
 
 
-function getData(term, location,  callBack) {
-    var gotError  = false;
+function getData(term, location, callBack) {
+    var gotError = false;
     var firstData = null;
 
     getYelpData(term, location, function (err, data) {
@@ -62,7 +62,7 @@ function getData(term, location,  callBack) {
             if (gotError) {
                 return callBack(err);
             } else {
-                gotError  = true;
+                gotError = true;
                 firstData = [];
             }
         } else {
@@ -74,12 +74,12 @@ function getData(term, location,  callBack) {
         }
     });
 
-    getFourSquare(term, location,  function (err, data) {
+    getFourSquare(term, location, function (err, data) {
         if (err) {
             if (gotError) {
                 return callBack(err);
             } else {
-                gotError  = true;
+                gotError = true;
                 firstData = [];
             }
         } else {
@@ -93,13 +93,12 @@ function getData(term, location,  callBack) {
     });
 }
 
-
 w3App.get('/search', function (req, res) {
-    var query         = req.query.term,
-        location      = req.query.location;
-    console.log(query,location);
+    var query = req.query.term,
+        location = req.query.location;
+    console.log(query, location);
     if (query && location) {
-        return getData(query, location,  function (err, data) {
+        return getData(query, location, function (err, data) {
             if (err) {
                 return res.send(JSON.stringify({err: true, code: err}));
             }
@@ -109,7 +108,6 @@ w3App.get('/search', function (req, res) {
         return res.send(JSON.stringify({err: true, code: 'INVALID_REQUEST'}));
     }
 });
-
 
 w3App.listen(3011, function () {
     opener('http://localhost:3011');

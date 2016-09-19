@@ -1,7 +1,7 @@
-
+<!-- For to display list and map-->
 <div class="row" style="height: 800px; width:2000px;">
     <div class="col-md-6  right-div" style="height: 800px; width:500px;overflow-y: scroll;">
-        <div ng-click="gotoBusiness(item.url)"  class="grid" ng-repeat="item in fetchData"
+        <div ng-click="gotoBusiness(item.url)" class="grid" ng-repeat="item in fetchData"
              class="item-detail" id="{{ item.id }}">
             <div class="item-rating pull-left">{{item.rating}}</div>
             <div class="item-name item-styles">{{$index + 1}}.{{item.name}}</div>
@@ -14,7 +14,6 @@
     </div>
 
     <div class="right-div">
-        <div id="map"   style="width: 33%; height: 800px;"></div>
+        <div id="map" style="width: 33%; height: 800px;"></div>
     </div>
-
 </div>

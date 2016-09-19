@@ -1,4 +1,3 @@
-
 module.exports = function (data) {
     var parsed = [];
     for (var ite of data.businesses) {
